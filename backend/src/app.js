@@ -54,6 +54,11 @@ if (process.env.NODE_ENV !== 'test') {
   app.use(morgan('combined'));
 }
 
+// Root Route
+app.get('/', (req, res) => {
+  res.send('IPL Nexus AI Auction API is running');
+});
+
 // Health check
 app.get('/health', (req, res) => {
   res.json({
