@@ -1,0 +1,220 @@
+@import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&family=Exo+2:wght@300;400;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg: #050a14;
+  --bg2: #0b1220;
+  --bg3: #111927;
+  --bg4: #162030;
+  --neon: #00d4ff;
+  --neon2: #7c3aed;
+  --neon3: #f59e0b;
+  --neon4: #10b981;
+  --neon5: #ef4444;
+  --text: #e2e8f0;
+  --text2: #94a3b8;
+  --text3: #64748b;
+  --border: rgba(255,255,255,0.08);
+  --border2: rgba(0,212,255,0.25);
+  --card: rgba(255,255,255,0.04);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  background-color: var(--bg);
+  color: var(--text);
+  font-family: 'Exo 2', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar { width: 5px; height: 5px; }
+::-webkit-scrollbar-track { background: var(--bg2); }
+::-webkit-scrollbar-thumb { background: rgba(0,212,255,0.3); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: rgba(0,212,255,0.6); }
+
+/* Glassmorphism card */
+.glass-card {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.glass-card-blue {
+  background: rgba(0,212,255,0.06);
+  border: 1px solid rgba(0,212,255,0.2);
+  backdrop-filter: blur(12px);
+}
+
+.glass-card-purple {
+  background: rgba(124,58,237,0.08);
+  border: 1px solid rgba(124,58,237,0.2);
+  backdrop-filter: blur(12px);
+}
+
+/* Neon text */
+.text-neon { color: var(--neon); }
+.text-neon-purple { color: var(--neon2); }
+.text-neon-amber { color: var(--neon3); }
+.text-neon-green { color: var(--neon4); }
+.text-neon-red { color: var(--neon5); }
+
+/* Gradient text */
+.gradient-text {
+  background: linear-gradient(135deg, var(--neon), var(--neon2));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.gradient-text-fire {
+  background: linear-gradient(135deg, var(--neon3), var(--neon5));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Neon glow borders */
+.neon-border { border: 1px solid rgba(0,212,255,0.4); box-shadow: 0 0 12px rgba(0,212,255,0.15); }
+.neon-border-purple { border: 1px solid rgba(124,58,237,0.4); box-shadow: 0 0 12px rgba(124,58,237,0.15); }
+.neon-border-green { border: 1px solid rgba(16,185,129,0.4); box-shadow: 0 0 12px rgba(16,185,129,0.15); }
+.neon-border-red { border: 1px solid rgba(239,68,68,0.4); box-shadow: 0 0 12px rgba(239,68,68,0.15); }
+
+/* Live pulse dot */
+.live-dot {
+  width: 8px; height: 8px;
+  background: var(--neon4);
+  border-radius: 50%;
+  animation: livePulse 1.5s ease-in-out infinite;
+}
+
+@keyframes livePulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.4; transform: scale(1.4); }
+}
+
+/* Bid flash animation */
+@keyframes bidFlash {
+  0% { opacity: 0; transform: translateY(-10px) scale(0.9); }
+  20% { opacity: 1; transform: translateY(0) scale(1); }
+  80% { opacity: 1; }
+  100% { opacity: 0; transform: translateY(-5px); }
+}
+
+.bid-flash-anim {
+  animation: bidFlash 1s ease forwards;
+}
+
+/* SOLD / UNSOLD banners */
+@keyframes soldBanner {
+  0% { opacity: 0; transform: scale(0.5) rotate(-5deg); }
+  60% { transform: scale(1.1) rotate(2deg); }
+  100% { opacity: 1; transform: scale(1) rotate(0deg); }
+}
+
+.sold-anim { animation: soldBanner 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) forwards; }
+
+/* Timer ring */
+.timer-ring-path {
+  transition: stroke-dashoffset 1s linear, stroke 0.3s ease;
+}
+
+/* Confetti */
+@keyframes confettiFall {
+  0% { transform: translateY(-100vh) rotate(0deg); opacity: 1; }
+  100% { transform: translateY(100vh) rotate(720deg); opacity: 0; }
+}
+
+/* Button styles */
+.btn-neon {
+  background: linear-gradient(135deg, var(--neon), rgba(0,212,255,0.7));
+  color: #020b16;
+  font-family: 'Rajdhani', sans-serif;
+  font-weight: 700;
+  letter-spacing: 1px;
+  transition: all 0.2s;
+}
+.btn-neon:hover { transform: translateY(-2px); box-shadow: 0 6px 24px rgba(0,212,255,0.4); }
+.btn-neon:active { transform: translateY(0); }
+.btn-neon:disabled { opacity: 0.35; cursor: not-allowed; transform: none; }
+
+.btn-purple {
+  background: rgba(124,58,237,0.2);
+  border: 1px solid rgba(124,58,237,0.5);
+  color: #a78bfa;
+  font-family: 'Rajdhani', sans-serif;
+  font-weight: 700;
+  letter-spacing: 1px;
+  transition: all 0.2s;
+}
+.btn-purple:hover { background: rgba(124,58,237,0.35); box-shadow: 0 4px 16px rgba(124,58,237,0.3); }
+
+/* Stadium background pattern */
+.stadium-bg {
+  background-image: 
+    radial-gradient(ellipse at 50% 100%, rgba(0,212,255,0.08) 0%, transparent 70%),
+    radial-gradient(ellipse at 0% 50%, rgba(124,58,237,0.05) 0%, transparent 50%),
+    radial-gradient(ellipse at 100% 50%, rgba(0,212,255,0.05) 0%, transparent 50%),
+    linear-gradient(180deg, #050a14 0%, #0b1220 100%);
+}
+
+/* Spotlight effect */
+.spotlight {
+  background: radial-gradient(ellipse at center top, rgba(0,212,255,0.12) 0%, transparent 60%);
+}
+
+/* Player card hover */
+.player-card-hover {
+  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+.player-card-hover:hover {
+  transform: translateY(-4px) scale(1.02);
+  box-shadow: 0 12px 40px rgba(0,212,255,0.2);
+}
+
+/* Section labels */
+.section-label {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: var(--text3);
+  text-transform: uppercase;
+}
+
+/* Typing dots */
+@keyframes typingDot {
+  0%, 100% { transform: translateY(0); opacity: 0.4; }
+  50% { transform: translateY(-4px); opacity: 1; }
+}
+.typing-dot:nth-child(1) { animation: typingDot 1s ease 0s infinite; }
+.typing-dot:nth-child(2) { animation: typingDot 1s ease 0.2s infinite; }
+.typing-dot:nth-child(3) { animation: typingDot 1s ease 0.4s infinite; }
+
+/* Input styles */
+.input-neon {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.1);
+  color: var(--text);
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+.input-neon:focus {
+  outline: none;
+  border-color: rgba(0,212,255,0.5);
+  box-shadow: 0 0 0 2px rgba(0,212,255,0.1);
+}
+
+/* Demand meter */
+.demand-bar {
+  height: 4px;
+  border-radius: 2px;
+  background: linear-gradient(90deg, var(--neon4), var(--neon3), var(--neon5));
+}
